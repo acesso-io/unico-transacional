@@ -113,6 +113,4 @@ Content-Type: application/json
 
 <img src="https://user-images.githubusercontent.com/1706703/173040789-8df30c0d-4bcc-4d1a-8ce7-a74cb08f6476.png">
 
-Para mais detalhes da documentação do SDK, [clique aqui.](https://developers.unico.io/guias/web/overview/)
-
 Para mais detalhes da documentação da API, [clique aqui.](https://www4.acesso.io/transacional/services/transactional/docs/)
