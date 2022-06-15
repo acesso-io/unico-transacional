@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: serif;
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f9f9f9;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 15px;
+  background: #fff;
+}
+
+main {
+  text-align: center;
+  padding: 30px 20px 0;
+  position: relative;
+}
+
+footer {
+  border-top: 1px solid #eee;
+  font-size: 0.875em;
+  color: #767676;
+  padding: 30px;
+  line-height: 1.8;
+}
+
+footer a {
+  color: #1172eb;
+}
+
+.infos-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.infos-wrapper__title {
+  font-size: 1.25em;
+  max-width: 320px;
+  display: inline-block;
+}
+
+.infos-wrapper__subtitle {
+  max-width: 280px;
+  display: inline-block;
+}
+
+.infos-wrapper__image {
+  display: inline-block;
+  margin: 50px 0;
+  max-width: 280px;
+}
+
+.infos-wrapper__buttons {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  z-index: 999;
+  position: relative;
+}
+
+.infos-wrapper__main-button {
+  color: #fff;
+  background: #1172eb;
+  font-weight: 700;
+  display: inline-block;
+  font-size: 1.125em;
+  text-decoration: none;
+  padding: 15px 50px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+.infos-wrapper__main-button:hover {
+  background: #3d8ae8;
+}
+
+.infos-wrapper__skip-button {
+  margin: 50px 0;
+  color: #1172eb;
+  background-color: transparent;
+  text-decoration: underline;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.loading-sdk {
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  position: fixed;
+  background: rgb(0 0 0 / 60%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.loading-sdk.is-visible {
+  display: flex;
+}
+
+.cpf-form {
+  position: fixed;
+  display: none;
+  justify-content: center;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 9999;
+}
+
+.cpf-form.is-visible {
+  display: flex;
+}
+
+.field-holder {
+  margin-bottom: 30px;
+}
+
+.cpf-form form {
+  width: 100%;
+  padding: 50px 20px 0;
+  max-width: 450px;
+}
+
+.cpf-form img {
+  margin: 0 0 40px 0;
+}
+
+.cpf-form input {
+  width: 100%;
+  padding: 5px;
+}
+
+.form-label {
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+/* SDK */
+#DOM_FT_mainInterfaceNonOverlayContainer * {
+  font-family: "Atkinson Hyperlegible", sans-serif !important;
+}
