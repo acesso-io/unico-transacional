@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>unico</title>
+    <link rel="stylesheet" href="styles/tingle.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header>
+        <!-- your logo here -->
+        <img src="./images/logo-empresa.svg" alt="logo">
+        <img src="./images/protegido-pela-unico.svg" alt="selo protegido pela unico" width="90">
+    </header>
+    <main>
+        <div class="infos-wrapper">
+            <p class="infos-wrapper__title">Protegemos você e seu cartão de fraudes com apenas uma selfie.</p>
+            <img class="infos-wrapper__image" src="./images/selfie-illustration.svg" alt="">
+            <p class="infos-wrapper__subtitle">Capture a selfie do titular do cartão utilizado nesta compra.</p>
+            <div class="infos-wrapper__buttons">
+                <button id="take-selfie" type="button" class="infos-wrapper__main-button">Selfie do dono do cartão</button>
+                <button id="skip-selfie" type="button" class="infos-wrapper__skip-button">Pular etapa</button>
+            </div>
+            <div id="box-camera"></div>
+        </div>
+        <div id="form-container" class="cpf-form isvisible">
+            <form action="#" id="form">
+                <img src="./images/protegido-pela-unico.svg " alt="selo protegido pela unico" width="120">
+                <div class="field-holder">
+                    <label for="" class="form-label">Nome completo:</label>
+                    <input type="text" id="field-name">
+                </div>
+                <div class="field-holder">
+                    <label for="" class="form-label">CPF:</label>
+                    <input type="tel" id="field-cpf">
+                </div>
+                <div class="field-holder">
+                    <label for="" class="form-label">Dados cartão:</label>
+                    <input type="number" id="field-first" placeholder="Primeiros 6 dígitos" maxlength="6">
+                    <input type="number" id="field-last" placeholder="Últimos 4 dígitos" maxlength="4" style="margin-top: 5px">
+                    <input type="text" id="field-exp" placeholder="Data de expiração 01/01" maxlength="5" style="margin-top: 5px">
+                    <input type="number" id="field-value" placeholder="Valor da compra" style="margin-top: 5px">
+                </div>
+                <button type="submit" class="infos-wrapper__main-button">Continuar</button>
+            </form>
+        </div>
+        <div id="loading-sdk" class="loading-sdk">
+            <p>Iniciando câmera...</p>
+        </div>
+    </main>
+    <footer>
+        Antes de continuar é importante que você esteja ciente sobre como tratamos seus dados pessoais e porque coletamos a sua foto. Saiba mais em nosso <a href="">Termos de Uso</a> e nosso Link de <a href="">Política de Privacidade</a>.
+    </footer>
+    <script src="./js/tingle.min.js"></script>
+    <script src="./js/main.js" type="module"></script>
+</body>
+</html>

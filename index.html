@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>unico</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <main>
+    <div id="form-container" class="cpf-form is-visible">
+      <form action="#" id="form">
+        <img src="./images/protegido-pela-unico.svg " alt="selo protegido pela unico" width="120">
+        <div class="field-holder">
+          <label for="" class="form-label">Nome completo:</label>
+          <input type="text" id="field-name">
+        </div>
+        <div class="field-holder">
+          <label for="" class="form-label">CPF:</label>
+          <input type="tel" id="field-cpf">
+        </div>
+        <div class="field-holder">
+          <label for="" class="form-label">Dados cartão:</label>
+          <input type="number" id="field-first" placeholder="Primeiros 6 dígitos" maxlength="6">
+          <input type="number" id="field-last" placeholder="Últimos 4 dígitos" maxlength="4" style="margin-top: 5px">
+          <input type="text" id="field-exp" placeholder="Data de expiração 01/01" maxlength="5" style="margin-top: 5px">
+          <input type="number" id="field-value" placeholder="Valor da compra" style="margin-top: 5px">
+        </div>
+        <button type="submit" class="infos-wrapper__main-button">Continuar</button>
+      </form>
+    </div>
+  </main>
+  <script src="./js/form.js" type="module"></script>
+</body>
+</html>
