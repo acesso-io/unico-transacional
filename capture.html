@@ -10,18 +10,22 @@
 </head>
 <body>
     <header>
-        <!-- your logo here -->
-        <img src="./images/logo-empresa.svg" alt="logo">
         <img src="./images/protegido-pela-unico.svg" alt="selo protegido pela unico" width="90">
+        <button id="skip-selfie" type="button" class="infos-wrapper__skip-button">Pular</button>
     </header>
     <main>
         <div class="infos-wrapper">
-            <p class="infos-wrapper__title">Protegemos você e seu cartão de fraudes com apenas uma selfie.</p>
+            <!-- your logo here -->
+            <img src="./images/logo-empresa.svg" alt="logo">
+            <p class="infos-wrapper__title">Tire uma selfie da pessoa que é dona do cartão.</p>
+            <p class="infos-wrapper__explain">Usamos essa foto para autenticar a identidade da pessoa.</p>
             <img class="infos-wrapper__image" src="./images/selfie-illustration.svg" alt="">
-            <p class="infos-wrapper__subtitle">Capture a selfie do titular do cartão utilizado nesta compra.</p>
+            <p class="infos-wrapper__subtitle"><img class="infos-wrapper__subtitle_icon" src="./images/information.svg" alt="">A selfie precisa ser da pessoa dona do cartão.</p>
             <div class="infos-wrapper__buttons">
-                <button id="take-selfie" type="button" class="infos-wrapper__main-button">Selfie do dono do cartão</button>
-                <button id="skip-selfie" type="button" class="infos-wrapper__skip-button">Pular etapa</button>
+                <button id="take-selfie" type="button" class="infos-wrapper__main-button">Tirar selfie agora</button>
+                <p class="infos-wrapper__main-button-or">ou</p>
+                <button id="take-link" type="button" class="infos-wrapper__main-button-link"><img class="infos-wrapper__main-button-link-icon" src="./images/share.svg" alt="">Compartilhar link com a pessoa</button>
+                <p class="infos-wrapper__main-button-link-explain">Se você não for a pessoa dona do cartão, é só compartilhar o link acima pelo WhatsApp.</p>
             </div>
             <div id="box-camera"></div>
         </div>
@@ -51,7 +55,7 @@
         </div>
     </main>
     <footer>
-        Antes de continuar é importante que você esteja ciente sobre como tratamos seus dados pessoais e porque coletamos a sua foto. Saiba mais sobre nossa Política de Privacidade em nosso <a href="https://unico.io/privacidade-e-gestao-de-dados/">site</a>.
+        Antes de continuar é importante que você esteja ciente sobre como tratamos seus dados pessoais e porque coletamos a sua foto. Saiba mais em nosso <a href="https://unico.io/privacidade-e-gestao-de-dados/">Termos de Uso e Política de Privacidade</a>.
     </footer>
     <script src="./js/tingle.min.js"></script>
     <script src="./js/main.js" type="module"></script>
