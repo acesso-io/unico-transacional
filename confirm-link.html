@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>unico</title>
+    <link rel="stylesheet" href="styles/tingle.min.css">
+    <link rel="stylesheet" href="styles/main.css?v=1000">
+</head>
+<body>
+    <header>
+        <img src="./images/protegido-pela-unico.svg" alt="selo protegido pela unico" width="90">
+        <button id="skip-selfie" type="button" class="infos-wrapper__skip-button">Pular</button>
+    </header>
+    <main>
+        <div class="infos-wrapper">
+            <!-- your logo here -->
+            <img src="./images/logo-empresa.svg" alt="logo">
+            <p class="infos-wrapper__title">Você compartilhou o link com a pessoa dona do cartão?</p>
+            <p class="infos-wrapper__subtitle" style="margin-top: 30px;"><img class="infos-wrapper__subtitle_icon" src="./images/information.svg" alt="">A selfie precisa ser da pessoa dona do cartão.</p>
+            <div class="infos-wrapper__buttons">
+                <table>
+                    <tr>
+                        <td>
+                            <button id="take-back" type="button" class="infos-wrapper__main-button-back">Não, tirar selfie</button>
+                        </td>
+                        <td>
+                            <button id="take-finish" type="button" class="infos-wrapper__main-button-finish">Sim, continuar</button>
+                        </td>
+                    </tr>
+                </table>
+                <button id="take-link" type="button" class="infos-wrapper__main-button-link-simple"><img class="infos-wrapper__main-button-link-icon" src="./images/share.svg" alt="">Compartilhar link com a pessoa</button>
+                <p class="infos-wrapper__main-button-link-explain">Se você não for a pessoa dona do cartão, é só compartilhar o link acima pelo WhatsApp.</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        Antes de continuar é importante que você esteja ciente sobre como tratamos seus dados pessoais e porque coletamos a sua foto. Saiba mais em nosso <a href="https://unico.io/privacidade-e-gestao-de-dados/">Termos de Uso e Política de Privacidade</a>.
+    </footer>
+    <script src="./js/tingle.min.js"></script>
+    <script src="./js/main.js?v=1000" type="module"></script>
+</body>
+</html>

@@ -6,10 +6,12 @@ Essa é uma demostração de uso do nosso SDK em uma transação. Para dar um co
   1. Nossos clientes fazem o processo de checkout e coletam os dados necessários (a tela index.html simula isso)
   2. Com o CPF do titular do cartão em mãos, nossos clientes podem verificar se o CPF consta na base de autenticados
   3. Recebendo uma resposta positiva nossos clientes devem direcionar para a tela de captura de biometria (capture.html)
+  4. Na tela de captura de biometria (capture.html) caso o usuário não seja o dono do cartão poderá compartilhar um link para o real titular 
 
 Dito isso, temos duas páginas principais nesse repositório:
   - **index.html**: É uma tela de exemplo e que simula o checkout dos nossos clientes. Nossos clientes não precisam usá-la pois é apenas para testes. Porém, nela  poderão encontrar exemplos de códigos de como usar o primeiro método (que é o de verificar se o CPF consta na base de autenticados)
   - **capture.html**: É a tela principal que deve ser embarcada dentro do fluxo de nossos clientes. Para a PoC, orientamos que os clientes coloquem ela em seus próprios servidores e sigam as instruções dessa documentação para o melhor uso. É importante ressaltar que toda a comunicação da tela de capture deve ser feita com o Backend do cliente e o backend do cliente é que deve falar com a nossa API.
+  - **confirm-link.html**: É a tela de confirmação se o link foi compartilhado ou não.
 
 Veja abaixo o Passo a passo explicando o funcionamento:
 
@@ -17,6 +19,7 @@ Veja abaixo o Passo a passo explicando o funcionamento:
 
 - Altere o logo da empresa no diretório: `images/logo-empresa.svg`
 - Insira as URLs corretas no arquivo: `js/config.js` <br />
+- Altere o texto de compartilhamento: `js/main.js/getLink`
 
 
 
@@ -114,6 +117,49 @@ Content-Type: application/json
 ```
 
 Nesse momento todos os dados serão processados e nós iremos retornar para nossos clientes a resposta sobre a transação (se devem aprovar ou recusar). Existe duas opções para isso, sendo uma delas o nosso cliente desenvolver um Get onde ficará perguntando sobre a transação (usando o id retornado lá no começo) e quando ela estiver pronta receberá um status final, ou então o cliente pode configurar um webhook para receber a resposta de forma automática.
+
+Também é possível compartilhar um link, caso o real dono do cartão não esteja presente:
+
+**API Request**
+
+```
+POST /transaction/link
+Accept: application/json
+Content-Type: application/json
+Authorization: "AUTH_TOKEN_JWT"
+APIKEY: "API_KEY"
+```
+
+```json
+{
+  "transactional_id": "ID_DA_TRANSACAO",
+  "card": {
+    "first": "6_PRIMEIROS_DIGITOS_CARTAO",
+    "last": "4_ULTIMOS_DIGITOS_CARTAO",
+    "exp": "DATA_VALIDADE_CARTAO", 
+    "value": VALOR_COMPRA, //este é opcional durante a PoC, e podem passar 0
+    "name": "NOME_TITULAR_CARTAO"
+  }
+}
+```
+
+O retorno será o status, ID da validação biométrica e o link que será compartilhado. Isso quer dizer que os dados foram recebidos e o link está disponível para ser compartilhado:
+
+**API Response**
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+```
+
+```json
+{
+  "Status": true,
+  "Id": "b50ee24c-71eb-4a5d-ade1-41c48b44c240",
+  "Link:": "https://aces.so/example"
+}
+```
+
 
 Para mais detalhes da documentação da API, [clique aqui.](https://www4.acesso.io/transacional/services/transactional/docs/)
 

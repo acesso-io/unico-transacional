@@ -23,14 +23,20 @@ window.addEventListener("DOMContentLoaded", () => {
       initButtons: () => {
         const skipSelfButton = document.getElementById("skip-selfie");
         const takeSelfButton = document.getElementById("take-selfie");
+        const linkSelfButton = document.getElementById("take-link");
+        const linkBackSelfButton = document.getElementById("take-back");
+        const linkFinishSelfButton = document.getElementById("take-finish");
 
-        skipSelfButton.addEventListener("click", App.Actions.skipSelfie);
-        takeSelfButton.addEventListener("click", App.Actions.initSdk);
+        if(skipSelfButton) skipSelfButton.addEventListener("click", App.Actions.skipSelfie);
+        if(takeSelfButton) takeSelfButton.addEventListener("click", App.Actions.initSdk);
+        if(linkSelfButton) linkSelfButton.addEventListener("click", App.Actions.getLink);
+        if(linkBackSelfButton) linkBackSelfButton.addEventListener("click", App.Actions.getBack);
+        if(linkFinishSelfButton) linkFinishSelfButton.addEventListener("click", App.Actions.getFinish);
       },
       initModal: () => {
         modal.setContent(
           "<h1>Atenção</h1>" +
-            "<p>Falha ao extrair biometria. Por favor, tente novamente.</p>"
+            "<p id='error-text'>Falha ao extrair biometria. Por favor, tente novamente.</p>"
         );
         modal.addFooterBtn(
           "OK",
@@ -109,6 +115,65 @@ window.addEventListener("DOMContentLoaded", () => {
             }
           });
       },
+      /**
+       * Get link for share
+       */
+      getLink: () => {
+        const {
+          transactionalId,
+          cardFirstNumbers,
+          cardLastNumbers,
+          cardExpirationDate,
+          transactionValue,
+        } = JSON.parse(sessionStorage.getItem("transactionInfos"));
+
+        const body = {
+          transactional_id: transactionalId,
+          card: {
+            first: cardFirstNumbers,
+            last: cardLastNumbers,
+            exp: cardExpirationDate,
+            value: transactionValue == "" ? 0 : transactionValue,
+          },
+        };
+
+        fetch(`${BASE_URL}/transaction/link`, {
+          method: "POST",
+          body: JSON.stringify(body),
+          headers: utils.getHeaders(),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.Status) {
+                navigator.share({
+                  title: "Mobile - Autenticação",
+                  text: "Olá, estou fazendo uma compra com o seu cartão de crédito e, para concluir, preciso autenticar sua identidade." +
+                      "\n\n" +
+                      "Local da compra: XXXXX" + // please, type your organization name
+                      "\n\n" +
+                      "É só acessar o link abaixo, informar seu número de CPF e tirar uma selfie. É simples, rápido e seguro.",
+                  url: data.Link
+                })
+                    .then(() => window.location.href = "./confirm-link.html")
+                    .catch(error => console.log('Error sharing:', error));
+              }
+              if (!data.Status && data.Error) {
+                document.getElementById("error-text").textContent = data.Error.Description;
+                modal.open();
+              }
+            });
+      },
+      getBack: () => {
+        window.location.href = "./capture.html";
+      },
+      getFinish: () => {
+        if (environment.skipUrl) {
+          window.location.href = environment.skipUrl;
+        }
+        if (!environment.skipUrl) {
+          window.location.href = "./";
+        }
+      },
       selfieValidate: (jwtOutput) => {
         const {
           transactionalId,
@@ -148,6 +213,7 @@ window.addEventListener("DOMContentLoaded", () => {
               return;
             }
             if (!data.Status && data.Error) {
+              document.getElementById("error-text").textContent = data.Error.Description;
               modal.open();
               return;
             }
